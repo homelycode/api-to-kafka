@@ -109,7 +109,7 @@ def wait(host):
 producer = KafkaProducer(bootstrap_servers=[ args.kafka_bootstrap ])
 netloc = urlparse(args.url).netloc
 rate_limiter = RateLimiter(max_calls=1, period=args.delay)
-
+print(f'Scraping from url:"{args.url}"" on host:"{netloc}"')
 while True:
     try:
         with rate_limiter:
