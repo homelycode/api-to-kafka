@@ -1,0 +1,5 @@
+kafka-python
+requests
+lxml
+icmplib
+ratelimiter

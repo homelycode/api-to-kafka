@@ -1,0 +1,20 @@
+name: Build a Dockerfile
+on: [push, pull_request]
+jobs:
+  container:
+    name: Create container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out build code
+        uses: actions/checkout@v2
+
+      - name: Container build and push
+        id: docker # steps.docker.outputs.FULL_IMAGE_NAME
+        uses: whoan/docker-build-with-cache-action@v5
+        with:
+          username: rahulpowar
+          password: "${{ secrets.GITHUB_TOKEN }}"
+          registry: docker.pkg.github.com
+          image_name: a2k        
+          image_tag: latest
+          push_git_tag: true
