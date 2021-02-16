@@ -101,10 +101,11 @@ if not args.xml:
 
 
 def wait(host):
-    while True:
+    for i in range(int(args.delay/args.icmp_timeout)):
         res = ping(host, count=1, timeout=args.icmp_timeout)
         if res.is_alive:
-            break
+            return
+    raise Exception(f'icmp-dead:{host}')
 
 producer = KafkaProducer(bootstrap_servers=[ args.kafka_bootstrap ])
 netloc = urlparse(args.url).netloc
