@@ -31,6 +31,6 @@ FROM KAFKA BROKER 'redpanda:9092' TOPIC 'wibeee'
 FORMAT CSV WITH 11 COLUMNS;
 
 CREATE MATERIALIZED VIEW v_wibeee AS 
-	SELECT ts::timestamp, vrms1::float, irms1::float, pap1::float
+	SELECT ts::timestamp, vrms1::float, irms1::float, pap1::float, pac1::float, preac1::float,freq1::float, fpot1::float, eac1::float, ereactl1::float, ereactc1::float
 	FROM s_csv_wibeee;
 ~~~
